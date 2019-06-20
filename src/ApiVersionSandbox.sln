@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Tests", "WebApi.Tests\WebApi.Tests.csproj", "{ED3F4B4E-A0C8-42FD-926B-DA096587DCD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{91DF9D6E-AFBE-40BC-97DF-5CF6271E9B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91DF9D6E-AFBE-40BC-97DF-5CF6271E9B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91DF9D6E-AFBE-40BC-97DF-5CF6271E9B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED3F4B4E-A0C8-42FD-926B-DA096587DCD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3F4B4E-A0C8-42FD-926B-DA096587DCD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3F4B4E-A0C8-42FD-926B-DA096587DCD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3F4B4E-A0C8-42FD-926B-DA096587DCD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
