@@ -3,6 +3,7 @@ using System.Web.Http.Routing;
 using Microsoft.Owin;
 using Owin;
 using WebApi;
+using WebApi.Versioning;
 
 [assembly: OwinStartup(typeof(Startup))]
 

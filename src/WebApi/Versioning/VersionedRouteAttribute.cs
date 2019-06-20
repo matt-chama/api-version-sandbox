@@ -10,7 +10,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Http.Routing;
 
-namespace WebApi
+namespace WebApi.Versioning
 {
     public class VersionedRouteAttribute : Attribute, IActionFilter, IDirectRouteFactory
     {

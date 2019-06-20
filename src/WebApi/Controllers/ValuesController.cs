@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using WebApi.Versioning;
 
 namespace WebApi.Controllers
 {
@@ -17,15 +18,4 @@ namespace WebApi.Controllers
             return Ok(new[] { "get 2 value1", "get 2 value2" });
         }
     }
-    /*
-    [RoutePrefix("unversioned")]
-    public class UnversionedController : ApiController
-    {
-        [HttpGet, Route("")]
-        public IHttpActionResult Get()
-        {
-            return Ok(new[] { "value1", "value2" });
-        }
-    }
-    */
 }
