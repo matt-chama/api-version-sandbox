@@ -1,0 +1,14 @@
+﻿using System.Web.Http;
+
+namespace WebApi.Controllers
+{
+    [RoutePrefix("unversioned")]
+    public class UnversionedController : ApiController
+    {
+        [HttpGet, Route("get")]
+        public IHttpActionResult Get()
+        {
+            return Ok(new { HelloFrom = "unversioned" });
+        }
+    }
+}

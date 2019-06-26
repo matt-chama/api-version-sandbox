@@ -6,4 +6,4 @@ Asp.Net Web Api attribute route versioning
 
 - [ ] Swagger integration
 - [X] Mutliple version ranges, same route doesn't work
-- [ ] Version-neutral endpoints
+- [X] Version-neutral endpoints

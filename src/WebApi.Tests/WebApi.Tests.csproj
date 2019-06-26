@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="OwinTestConfiguration.cs" />
     <Compile Include="TestWebApiResolver.cs" />
+    <Compile Include="UnversionedTest.cs" />
     <Compile Include="VersioningTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

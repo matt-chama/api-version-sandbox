@@ -104,7 +104,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\UnversionedController.cs" />
+    <Compile Include="Controllers\MixedController.cs" />
+    <Compile Include="Controllers\VersionedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
