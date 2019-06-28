@@ -5,7 +5,7 @@ using System.Web.Http.Routing;
 
 namespace WebApi.Versioning
 {
-    public class VersionedDirectRouteProvider : DefaultDirectRouteProvider
+    public class DirectRouteProvider : DefaultDirectRouteProvider
     {
         private HttpActionDescriptor _actionContext;
 

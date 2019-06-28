@@ -110,7 +110,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Controllers\UnversionedController.cs" />
     <Compile Include="Controllers\MixedController.cs" />
     <Compile Include="Controllers\VersionedController.cs" />
@@ -119,7 +118,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Versioning\VersionedDirectRouteProvider.cs" />
+    <Compile Include="Versioning\ApiExplorer.cs" />
+    <Compile Include="Versioning\DirectRouteProvider.cs" />
     <Compile Include="Versioning\VersionedRouteAttribute.cs" />
   </ItemGroup>
   <ItemGroup>

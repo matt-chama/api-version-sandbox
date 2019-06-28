@@ -13,7 +13,7 @@ namespace WebApi.Tests
 
             config.Services.Replace(typeof(IAssembliesResolver), new TestWebApiResolver());
 
-            var routeProvider = new VersionedDirectRouteProvider();
+            var routeProvider = new DirectRouteProvider();
             config.MapHttpAttributeRoutes(routeProvider);
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);

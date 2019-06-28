@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Description;
 using Microsoft.Owin;
 using Owin;
 using Swashbuckle.Application;
@@ -15,9 +16,14 @@ namespace WebApi
         {
             HttpConfiguration config = new HttpConfiguration();
 
-            var routeProvider = new VersionedDirectRouteProvider();
+            var routeProvider = new DirectRouteProvider();
 
-            config.EnableSwagger(c=>c.SingleApiVersion("1", "Api V1"))
+            config.Services.Replace(
+                typeof(IApiExplorer),
+                new Versioning.ApiExplorer(config));
+
+            config
+                .EnableSwagger(c => c.SingleApiVersion("1", "Api V1"))
                 .EnableSwaggerUi();
 
             config.MapHttpAttributeRoutes(routeProvider);
