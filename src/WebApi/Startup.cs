@@ -25,9 +25,11 @@ namespace WebApi
 
             config.MapHttpAttributeRoutes(routeProvider);
 
+            /*
             config.Services.Replace(
                 typeof(IApiExplorer),
-                new Versioning.ApiExplorer(config));
+                new Versioning.ApiExplorer(config);
+            */
 
             app.UseWebApi(config);
         }

@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Http.Routing;
+using System.Web.Http.Routing.Constraints;
 
 namespace WebApi.Versioning
 {
@@ -67,12 +68,28 @@ namespace WebApi.Versioning
 
             string[] templateSplit = Template.Split('/');
 
+            string constraintName = $"v_{MinimumValue}_{MaximumValue}";
+
             List<string> routeSegments = new List<string>
             {
                 "api",
-                $"v{{version:int:min({MinimumValue}):max({MaximumValue})}}",
+                $"v{{{constraintName}:int:min({MinimumValue}):max({MaximumValue})}}",
                 prefix
             };
+
+            Constraints = new Dictionary<string, object>
+            {
+                {
+                    constraintName,
+                    new CompoundRouteConstraint(new List<IHttpRouteConstraint>()
+                    {
+                        new IntRouteConstraint(),
+                        new MinRouteConstraint(MinimumValue),
+                        new MaxRouteConstraint(MaximumValue)
+                    })
+                }
+            };
+
 
             routeSegments.AddRange(templateSplit);
 
@@ -148,12 +165,19 @@ namespace WebApi.Versioning
                 .ControllerContext
                 .RouteData
                 .Values
-                .TryGetValue("version", out version);
+                .Any(x => x.Key.StartsWith("v_"));
 
-            string versionString = version as string;
+            if (!versionExists)
+            {
+                throw new Exception("This route requires a version value but none was provided.");
+            }
 
-            if (!versionExists ||
-                string.IsNullOrEmpty(versionString) ||
+            string versionString = actionContext
+                .ControllerContext
+                .RouteData.Values.First(x => x.Key.StartsWith("v_"))
+                .Value as string;
+
+            if (string.IsNullOrEmpty(versionString) ||
                 !int.TryParse(versionString, out int versionInt))
             {
                 throw new Exception("This route requires a version value but none was provided.");
