@@ -33,5 +33,13 @@ namespace WebApi.Helpers
                     paramName);
             }
         }
+
+        public static void That(bool condition, string paramName, string message)
+        {
+            if (!condition)
+            {
+                throw new ArgumentException(message, paramName);
+            }
+        }
     }
 }

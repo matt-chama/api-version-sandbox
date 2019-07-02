@@ -10,6 +10,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Http.Routing;
 using System.Web.Http.Routing.Constraints;
+using WebApi.Helpers;
 
 namespace WebApi.Versioning
 {
@@ -23,6 +24,14 @@ namespace WebApi.Versioning
             int minimumValue,
             int maximumValue)
         {
+            Ensure.IsPositiveInteger(minimumValue, nameof(minimumValue));
+            Ensure.IsPositiveInteger(maximumValue, nameof(maximumValue));
+
+            Ensure.That(
+                maximumValue >= minimumValue,
+                nameof(minimumValue),
+                "Minimum version must be less than or equal to maximum version.");
+
             Template = template;
             MinimumValue = minimumValue;
             MaximumValue = maximumValue;
