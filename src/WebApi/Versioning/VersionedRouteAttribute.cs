@@ -81,7 +81,7 @@ namespace WebApi.Versioning
             {
                 {
                     constraintName,
-                    new CompoundRouteConstraint(new List<IHttpRouteConstraint>()
+                    new CompoundRouteConstraint(new List<IHttpRouteConstraint>
                     {
                         new IntRouteConstraint(),
                         new MinRouteConstraint(MinimumValue),
@@ -89,7 +89,6 @@ namespace WebApi.Versioning
                     })
                 }
             };
-
 
             routeSegments.AddRange(templateSplit);
 
@@ -159,8 +158,6 @@ namespace WebApi.Versioning
             CancellationToken cancellationToken,
             Func<Task<HttpResponseMessage>> continuation)
         {
-            object version;
-
             bool versionExists = actionContext
                 .ControllerContext
                 .RouteData
@@ -174,7 +171,9 @@ namespace WebApi.Versioning
 
             string versionString = actionContext
                 .ControllerContext
-                .RouteData.Values.First(x => x.Key.StartsWith("v_"))
+                .RouteData
+                .Values
+                .First(x => x.Key.StartsWith("v_"))
                 .Value as string;
 
             if (string.IsNullOrEmpty(versionString) ||
