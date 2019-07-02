@@ -7,7 +7,13 @@ namespace WebApi.Versioning
 {
     public class DirectRouteProvider : DefaultDirectRouteProvider
     {
+        private readonly string _globalPrefix;
         private HttpActionDescriptor _actionContext;
+
+        public DirectRouteProvider(string globalPrefix)
+        {
+            _globalPrefix = globalPrefix;
+        }
 
         protected override IReadOnlyList<RouteEntry> GetActionDirectRoutes(
             HttpActionDescriptor actionDescriptor,
@@ -31,7 +37,7 @@ namespace WebApi.Versioning
         {
             if (_actionContext == null)
             {
-                return base.GetRoutePrefix(controllerDescriptor);
+                return string.Join("/", _globalPrefix, base.GetRoutePrefix(controllerDescriptor));
             }
 
             if (_actionContext is ReflectedHttpActionDescriptor reflectedAction)
@@ -42,7 +48,7 @@ namespace WebApi.Versioning
 
                 if (attribute == null)
                 {
-                    return base.GetRoutePrefix(controllerDescriptor);
+                    return string.Join("/", _globalPrefix, base.GetRoutePrefix(controllerDescriptor));
                 }
             }
 
